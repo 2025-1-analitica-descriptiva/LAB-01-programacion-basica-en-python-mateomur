@@ -25,4 +25,25 @@ def pregunta_06():
      ('iii', 0, 9),
      ('jjj', 5, 17)]
 
-    """
+    """ 
+    resultado_dict = {}
+
+    with open("files/input/data.csv", "r") as archivo:
+        for linea in archivo:
+            columnas = linea.strip().split('\t')
+            if len(columnas) >= 5:
+                codigos = columnas[4].split(',')
+                for par in codigos:
+                    clave, valor_str = par.split(':')
+                    valor = int(valor_str)
+
+                    if clave in resultado_dict:
+                        resultado_dict[clave][0] = min(resultado_dict[clave][0], valor)
+                        resultado_dict[clave][1] = max(resultado_dict[clave][1], valor)
+                    else:
+                        resultado_dict[clave] = [valor, valor]
+
+    resultado = [(clave, valores[0], valores[1]) for clave, valores in resultado_dict.items()]
+    resultado.sort(key=lambda x: x[0])
+    return resultado
+
