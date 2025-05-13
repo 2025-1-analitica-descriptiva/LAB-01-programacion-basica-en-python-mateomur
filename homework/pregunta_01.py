@@ -7,6 +7,16 @@ utilizar pandas, numpy o scipy.
 
 
 def pregunta_01():
+
+    suma = 0
+    with open("files/input/data.csv", "r")  as archivo:
+        for linea in archivo:
+            # Dividir la línea por tabulaciones y obtener la segunda columna    
+            columnas = linea.strip().split('\t')
+            if len(columnas) >= 2:
+                # Convertir a entero y sumar
+                suma += int(columnas[1])
+    return suma
     """
     Retorne la suma de la segunda columna.
 
