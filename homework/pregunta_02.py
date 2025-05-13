@@ -13,5 +13,28 @@ def pregunta_02():
 
     Rta/
     [('A', 8), ('B', 7), ('C', 5), ('D', 6), ('E', 14)]
-
     """
+
+    conteo_letras = {}
+    
+
+    with open("files/input/data.csv", "r") as archivo:
+        for linea in archivo:
+
+            columnas = linea.strip().split('\t')
+            if columnas:
+                letra = columnas[0]
+                
+
+                if letra in conteo_letras:
+                    conteo_letras[letra] += 1
+                else:
+                    conteo_letras[letra] = 1
+    
+
+    resultado = [(letra, cantidad) for letra, cantidad in conteo_letras.items()]
+    
+
+    resultado.sort(key=lambda x: x[0])
+    
+    return resultado
