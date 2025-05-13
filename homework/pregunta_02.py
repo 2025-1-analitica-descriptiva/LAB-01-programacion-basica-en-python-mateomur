@@ -19,13 +19,12 @@ def pregunta_02():
     
 
     with open("files/input/data.csv", "r") as archivo:
+        
         for linea in archivo:
-
             columnas = linea.strip().split('\t')
             if columnas:
                 letra = columnas[0]
                 
-
                 if letra in conteo_letras:
                     conteo_letras[letra] += 1
                 else:

@@ -13,5 +13,26 @@ def pregunta_03():
 
     Rta/
     [('A', 53), ('B', 36), ('C', 27), ('D', 31), ('E', 67)]
-
     """
+
+    suma_por_letra = {}
+
+    with open("files/input/data.csv", "r") as archivo:
+        for linea in archivo:
+            columnas = linea.strip().split('\t')
+            if len(columnas) >= 2:
+                letra = columnas[0]
+                valor = int(columnas[1])
+                
+
+                if letra in suma_por_letra:
+                    suma_por_letra[letra] += valor
+                else:
+                    suma_por_letra[letra] = valor
+    
+
+    resultado = [(letra, suma) for letra, suma in suma_por_letra.items()]
+
+    resultado.sort(key=lambda x: x[0])
+    
+    return resultado
