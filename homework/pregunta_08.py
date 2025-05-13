@@ -6,8 +6,8 @@ utilizar pandas, numpy o scipy.
 """
 
 def pregunta_08():
+    
     agrupados = {}
-
     with open("files/input/data.csv", "r") as archivo:
         for linea in archivo:
             columnas = linea.strip().split('\t')
